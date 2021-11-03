@@ -56,76 +56,76 @@ data class KurobaTheme(
     if (name.value.isEmpty()) {
       errors["name"] = Unit
     }
-    if (accentColor.value.isUnspecified) {
+    if (accentColor.value.isUnspecified || accentColor.value.alpha <= 0f) {
       errors["accentColor"] = Unit
     }
-    if (primaryColor.value.isUnspecified) {
+    if (primaryColor.value.isUnspecified || primaryColor.value.alpha <= 0f) {
       errors["primaryColor"] = Unit
     }
-    if (backColor.value.isUnspecified) {
+    if (backColor.value.isUnspecified || backColor.value.alpha <= 0f) {
       errors["backColor"] = Unit
     }
-    if (backColorSecondary.value.isUnspecified) {
+    if (backColorSecondary.value.isUnspecified || backColorSecondary.value.alpha <= 0f) {
       errors["backColorSecondary"] = Unit
     }
-    if (errorColor.value.isUnspecified) {
+    if (errorColor.value.isUnspecified || errorColor.value.alpha <= 0f) {
       errors["errorColor"] = Unit
     }
-    if (textColorPrimary.value.isUnspecified) {
+    if (textColorPrimary.value.isUnspecified || textColorPrimary.value.alpha <= 0f) {
       errors["textColorPrimary"] = Unit
     }
-    if (textColorSecondary.value.isUnspecified) {
+    if (textColorSecondary.value.isUnspecified || textColorSecondary.value.alpha <= 0f) {
       errors["textColorSecondary"] = Unit
     }
-    if (textColorHint.value.isUnspecified) {
+    if (textColorHint.value.isUnspecified || textColorHint.value.alpha <= 0f) {
       errors["textColorHint"] = Unit
     }
-    if (postHighlightedColor.value.isUnspecified) {
+    if (postHighlightedColor.value.isUnspecified || postHighlightedColor.value.alpha <= 0f) {
       errors["postHighlightedColor"] = Unit
     }
-    if (postSavedReplyColor.value.isUnspecified) {
+    if (postSavedReplyColor.value.isUnspecified || postSavedReplyColor.value.alpha <= 0f) {
       errors["postSavedReplyColor"] = Unit
     }
-    if (postSubjectColor.value.isUnspecified) {
+    if (postSubjectColor.value.isUnspecified || postSubjectColor.value.alpha <= 0f) {
       errors["postSubjectColor"] = Unit
     }
-    if (postDetailsColor.value.isUnspecified) {
+    if (postDetailsColor.value.isUnspecified || postDetailsColor.value.alpha <= 0f) {
       errors["postDetailsColor"] = Unit
     }
-    if (postNameColor.value.isUnspecified) {
+    if (postNameColor.value.isUnspecified || postNameColor.value.alpha <= 0f) {
       errors["postNameColor"] = Unit
     }
-    if (postInlineQuoteColor.value.isUnspecified) {
+    if (postInlineQuoteColor.value.isUnspecified || postInlineQuoteColor.value.alpha <= 0f) {
       errors["postInlineQuoteColor"] = Unit
     }
-    if (postQuoteColor.value.isUnspecified) {
+    if (postQuoteColor.value.isUnspecified || postQuoteColor.value.alpha <= 0f) {
       errors["postQuoteColor"] = Unit
     }
-    if (postHighlightQuoteColor.value.isUnspecified) {
+    if (postHighlightQuoteColor.value.isUnspecified || postHighlightQuoteColor.value.alpha <= 0f) {
       errors["postHighlightQuoteColor"] = Unit
     }
-    if (postLinkColor.value.isUnspecified) {
+    if (postLinkColor.value.isUnspecified || postLinkColor.value.alpha <= 0f) {
       errors["postLinkColor"] = Unit
     }
-    if (postSpoilerColor.value.isUnspecified) {
+    if (postSpoilerColor.value.isUnspecified || postSpoilerColor.value.alpha <= 0f) {
       errors["postSpoilerColor"] = Unit
     }
-    if (postSpoilerRevealTextColor.value.isUnspecified) {
+    if (postSpoilerRevealTextColor.value.isUnspecified || postSpoilerRevealTextColor.value.alpha <= 0f) {
       errors["postSpoilerRevealTextColor"] = Unit
     }
-    if (postUnseenLabelColor.value.isUnspecified) {
+    if (postUnseenLabelColor.value.isUnspecified || postUnseenLabelColor.value.alpha <= 0f) {
       errors["postUnseenLabelColor"] = Unit
     }
-    if (dividerColor.value.isUnspecified) {
+    if (dividerColor.value.isUnspecified || dividerColor.value.alpha <= 0f) {
       errors["dividerColor"] = Unit
     }
-    if (bookmarkCounterNotWatchingColor.value.isUnspecified) {
+    if (bookmarkCounterNotWatchingColor.value.isUnspecified || bookmarkCounterNotWatchingColor.value.alpha <= 0f) {
       errors["bookmarkCounterNotWatchingColor"] = Unit
     }
-    if (bookmarkCounterHasRepliesColor.value.isUnspecified) {
+    if (bookmarkCounterHasRepliesColor.value.isUnspecified || bookmarkCounterHasRepliesColor.value.alpha <= 0f) {
       errors["bookmarkCounterHasRepliesColor"] = Unit
     }
-    if (bookmarkCounterNormalColor.value.isUnspecified) {
+    if (bookmarkCounterNormalColor.value.isUnspecified || bookmarkCounterNormalColor.value.alpha <= 0f) {
       errors["bookmarkCounterNormalColor"] = Unit
     }
   }
@@ -423,6 +423,10 @@ data class KurobaTheme(
     @JvmStatic
     fun isDarkColor(color: Int): Boolean {
       return calculateLuminance(color) < 0.5f
+    }
+
+    fun isNearToFullyBlackColor(color: Color): Boolean {
+      return calculateLuminance(color.toArgb()) < 0.01f
     }
 
     private fun calculateLuminance(@ColorInt color: Int): Double {

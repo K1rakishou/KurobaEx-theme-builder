@@ -13,7 +13,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun StoreThemePopupScreen() {
+fun SaveThemePopupScreen() {
   val kurobaTheme = LocalKurobaTheme.current
   val gson = Deps.gsonPrettyPrint
 

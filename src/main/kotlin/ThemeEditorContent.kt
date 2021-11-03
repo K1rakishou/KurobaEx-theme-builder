@@ -272,7 +272,7 @@ private fun ColorInput(
           }
 
           val newColor = newColorString.toColor(forceAlpha = false)
-          hasError = newColor == null || newColor.isUnspecified
+          hasError = newColor == null || newColor.isUnspecified || newColor.alpha <= 0f
 
           if (newColor != null) {
             color = newColor

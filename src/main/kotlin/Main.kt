@@ -21,7 +21,7 @@ import data.KurobaTheme
 import screens.popup.ErrorMessagePopupScreen
 import screens.popup.LoadThemePopupScreen
 import screens.popup.PopupScreen
-import screens.popup.StoreThemePopupScreen
+import screens.popup.SaveThemePopupScreen
 
 
 val LocalKurobaTheme = staticCompositionLocalOf<KurobaTheme> { error("KurobaTheme is not provided") }
@@ -170,7 +170,7 @@ private fun PopupContent(popupScreen: PopupScreen) {
       )
     }
     is PopupScreen.SaveTheme -> {
-      StoreThemePopupScreen()
+      SaveThemePopupScreen()
     }
     is PopupScreen.Error -> {
       ErrorMessagePopupScreen(screen)

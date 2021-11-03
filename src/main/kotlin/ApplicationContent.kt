@@ -1,6 +1,3 @@
-import androidx.compose.animation.Crossfade
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -58,17 +55,12 @@ private fun BoxScope.KurobaContent(state: State) {
   Box(modifier = Modifier.fillMaxSize()) {
     val currentScreen by state.currentScreen
 
-    Crossfade(
-      targetState = currentScreen,
-      animationSpec = tween(easing = LinearEasing)
-    ) {
-      when (currentScreen) {
-        Screen.Search -> SearchScreen()
-        Screen.Archive -> ArchiveScreen()
-        Screen.Bookmarks -> BookmarksScreen()
-        Screen.Browse -> BrowseScreen()
-        Screen.Settings -> SettingsScreen()
-      }
+    when (currentScreen) {
+      Screen.Search -> SearchScreen()
+      Screen.Archive -> ArchiveScreen()
+      Screen.Bookmarks -> BookmarksScreen()
+      Screen.Browse -> BrowseScreen()
+      Screen.Settings -> SettingsScreen()
     }
   }
 }
@@ -89,6 +81,19 @@ private fun BoxScope.BottomNavigationContent(
     Screen.values().forEach { screen ->
       val weight = 1f / Screen.values().size.toFloat()
 
+      val uncheckedColor = if (KurobaTheme.isNearToFullyBlackColor(kurobaTheme.primaryColor.value)) {
+        Color.DarkGray
+      } else {
+        KurobaTheme.manipulateColor(kurobaTheme.primaryColor.value, .7f)
+      }
+
+      val selected = state.currentScreen.value == screen
+      val textColor = if (selected) {
+        Color.White
+      } else {
+        uncheckedColor
+      }
+
       Box(
         modifier = Modifier
           .fillMaxHeight()
@@ -100,9 +105,9 @@ private fun BoxScope.BottomNavigationContent(
             .wrapContentSize()
             .align(Alignment.Center),
           maxLines = 2,
-          fontSize = 14.sp,
+          fontSize = 18.sp,
           text = screen.screenName,
-          color = Color.White
+          color = textColor
         )
       }
     }
