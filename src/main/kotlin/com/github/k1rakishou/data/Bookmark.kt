@@ -1,4 +1,4 @@
-package data
+package com.github.k1rakishou.data
 
 data class Bookmark(
   val watching: Boolean,

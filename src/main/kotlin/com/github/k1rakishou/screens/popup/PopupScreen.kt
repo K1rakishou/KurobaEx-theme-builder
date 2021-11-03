@@ -1,4 +1,4 @@
-package screens.popup
+package com.github.k1rakishou.screens.popup
 
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp

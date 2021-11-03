@@ -1,4 +1,5 @@
-// Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+package com.github.k1rakishou
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -17,11 +18,11 @@ import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.*
-import data.KurobaTheme
-import screens.popup.ErrorMessagePopupScreen
-import screens.popup.LoadThemePopupScreen
-import screens.popup.PopupScreen
-import screens.popup.SaveThemePopupScreen
+import com.github.k1rakishou.data.KurobaTheme
+import com.github.k1rakishou.screens.popup.ErrorMessagePopupScreen
+import com.github.k1rakishou.screens.popup.LoadThemePopupScreen
+import com.github.k1rakishou.screens.popup.PopupScreen
+import com.github.k1rakishou.screens.popup.SaveThemePopupScreen
 
 
 val LocalKurobaTheme = staticCompositionLocalOf<KurobaTheme> { error("KurobaTheme is not provided") }
@@ -76,7 +77,7 @@ fun MainContent() {
 
 @Composable
 private fun ProcessPopupEvents(deps: Deps) {
-  val popups = deps.popupScreensStack
+  val popups = Deps.popupScreensStack
   if (popups.isEmpty()) {
     return
   }
@@ -87,7 +88,7 @@ private fun ProcessPopupEvents(deps: Deps) {
   for ((index, popupScreen) in popups.withIndex()) {
 
     fun closeTopPopup(popupScreen: PopupScreen) {
-      deps.popPopupScreen(popupScreen)
+      Deps.popPopupScreen(popupScreen)
     }
 
     Popup(
@@ -180,7 +181,7 @@ private fun PopupContent(popupScreen: PopupScreen) {
   val errPopup = errorPopup
   if (errPopup != null) {
     DisposableEffect(key1 = errPopup) {
-      deps.pushPopupScreen(errPopup)
+      Deps.pushPopupScreen(errPopup)
       onDispose { errorPopup = null }
     }
   }

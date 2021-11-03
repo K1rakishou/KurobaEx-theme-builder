@@ -1,9 +1,11 @@
+package com.github.k1rakishou
+
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.toComposeImageBitmap
+import com.github.k1rakishou.screens.popup.PopupScreen
 import com.google.gson.Gson
 import org.jetbrains.skia.Image
-import screens.popup.PopupScreen
 
 object Deps {
   private val _popupScreensStack = mutableStateListOf<PopupScreen>()
@@ -12,7 +14,7 @@ object Deps {
 
   val image: ImageBitmap by lazy {
     return@lazy Image.makeFromEncoded(
-        this.javaClass.getResourceAsStream("post_image.png")!!.readAllBytes()
+        this.javaClass.classLoader.getResourceAsStream("post_image.png")!!.readAllBytes()
     ).toComposeImageBitmap()
   }
 

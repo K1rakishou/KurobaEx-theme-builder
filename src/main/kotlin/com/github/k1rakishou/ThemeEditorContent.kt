@@ -1,3 +1,5 @@
+package com.github.k1rakishou
+
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -17,7 +19,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import screens.popup.PopupScreen
+import com.github.k1rakishou.screens.popup.PopupScreen
 import java.util.*
 
 private val HEX_NUMBER_CHARACTERS = setOf("A", "B", "C", "D", "E", "F")
@@ -25,11 +27,11 @@ private val HEX_NUMBER_CHARACTERS = setOf("A", "B", "C", "D", "E", "F")
 @Composable
 fun BoxScope.ThemeEditorContent() {
   val deps = LocalDeps.current
-  val gson = deps.gson
+  val gson = Deps.gson
 
   BuildContentInternal(
-    onLoadThemeClicked = { deps.pushPopupScreen(PopupScreen.LoadTheme) },
-    onSaveThemeClicked = { deps.pushPopupScreen(PopupScreen.SaveTheme) },
+    onLoadThemeClicked = { Deps.pushPopupScreen(PopupScreen.LoadTheme) },
+    onSaveThemeClicked = { Deps.pushPopupScreen(PopupScreen.SaveTheme) },
   )
 }
 

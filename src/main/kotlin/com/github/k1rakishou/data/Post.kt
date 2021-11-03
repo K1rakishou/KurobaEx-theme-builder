@@ -1,4 +1,4 @@
-package data
+package com.github.k1rakishou.data
 
 import androidx.compose.ui.text.AnnotatedString
 

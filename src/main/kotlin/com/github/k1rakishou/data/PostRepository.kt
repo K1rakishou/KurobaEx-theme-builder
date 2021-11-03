@@ -1,9 +1,9 @@
-package data
+package com.github.k1rakishou.data
 
-import Utils
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
+import com.github.k1rakishou.Utils
 import java.text.SimpleDateFormat
 import java.util.*
 

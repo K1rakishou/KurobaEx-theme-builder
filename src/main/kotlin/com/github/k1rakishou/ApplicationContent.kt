@@ -1,3 +1,5 @@
+package com.github.k1rakishou
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -8,11 +10,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import data.KurobaTheme
-import screens.ArchiveScreen
-import screens.BookmarksScreen
-import screens.BrowseScreen
-import screens.SettingsScreen
+import com.github.k1rakishou.data.KurobaTheme
+import com.github.k1rakishou.screens.ArchiveScreen
+import com.github.k1rakishou.screens.BookmarksScreen
+import com.github.k1rakishou.screens.BrowseScreen
+import com.github.k1rakishou.screens.SettingsScreen
 
 @Composable
 fun BoxScope.ApplicationContent() {

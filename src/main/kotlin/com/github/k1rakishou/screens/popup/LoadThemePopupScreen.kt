@@ -1,7 +1,5 @@
-package screens.popup
+package com.github.k1rakishou.screens.popup
 
-import LocalDeps
-import LocalKurobaTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -12,9 +10,11 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.github.k1rakishou.LocalDeps
+import com.github.k1rakishou.LocalKurobaTheme
+import com.github.k1rakishou.data.KurobaTheme
+import com.github.k1rakishou.data.KurobaThemeJson
 import com.google.gson.Gson
-import data.KurobaTheme
-import data.KurobaThemeJson
 
 
 @Composable

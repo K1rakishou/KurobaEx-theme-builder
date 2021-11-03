@@ -1,3 +1,5 @@
+package com.github.k1rakishou
+
 object Utils {
 
   fun getReadableFileSize(bytes: Long): String {

@@ -1,4 +1,4 @@
-package data
+package com.github.k1rakishou.data
 
 import androidx.annotation.ColorInt
 import androidx.compose.material.ContentAlpha
@@ -12,8 +12,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.isUnspecified
 import androidx.compose.ui.graphics.toArgb
-import toArgbHexString
-import toColor
+import com.github.k1rakishou.toArgbHexString
+import com.github.k1rakishou.toColor
 import kotlin.math.roundToInt
 
 

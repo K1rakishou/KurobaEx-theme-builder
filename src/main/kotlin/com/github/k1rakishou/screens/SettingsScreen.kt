@@ -1,8 +1,5 @@
-package screens
+package com.github.k1rakishou.screens
 
-import KurobaComposeDivider
-import KurobaComposeSwitch
-import LocalKurobaTheme
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -13,6 +10,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.github.k1rakishou.KurobaComposeDivider
+import com.github.k1rakishou.KurobaComposeSwitch
+import com.github.k1rakishou.LocalKurobaTheme
 
 @Composable
 fun SettingsScreen() {

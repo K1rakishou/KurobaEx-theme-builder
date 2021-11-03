@@ -1,7 +1,5 @@
-package screens
+package com.github.k1rakishou.screens
 
-import LocalDeps
-import LocalKurobaTheme
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
@@ -16,8 +14,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.unit.dp
-import data.Bookmark
-import data.BookmarkRepository
+import com.github.k1rakishou.LocalDeps
+import com.github.k1rakishou.LocalKurobaTheme
+import com.github.k1rakishou.data.Bookmark
+import com.github.k1rakishou.data.BookmarkRepository
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

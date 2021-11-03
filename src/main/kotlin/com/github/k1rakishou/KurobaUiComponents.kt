@@ -1,3 +1,5 @@
+package com.github.k1rakishou
+
 import androidx.compose.material.Divider
 import androidx.compose.material.Switch
 import androidx.compose.runtime.Composable

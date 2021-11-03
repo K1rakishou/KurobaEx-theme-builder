@@ -1,6 +1,5 @@
-package screens.popup
+package com.github.k1rakishou.screens.popup
 
-import LocalDeps
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -11,6 +10,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.github.k1rakishou.LocalDeps
 
 @Composable
 fun ErrorMessagePopupScreen(errorScreen: PopupScreen.Error) {

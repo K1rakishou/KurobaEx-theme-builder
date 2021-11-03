@@ -1,6 +1,6 @@
-package data
+package com.github.k1rakishou.data
 
-import Utils
+import com.github.k1rakishou.Utils
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.random.Random

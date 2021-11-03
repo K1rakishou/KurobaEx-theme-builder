@@ -1,3 +1,5 @@
+package com.github.k1rakishou
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.runtime.remember

@@ -1,8 +1,5 @@
-package screens
+package com.github.k1rakishou.screens
 
-import KurobaComposeDivider
-import LocalDeps
-import LocalKurobaTheme
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,8 +13,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.unit.dp
-import data.Post
-import data.PostRepository
+import com.github.k1rakishou.KurobaComposeDivider
+import com.github.k1rakishou.LocalDeps
+import com.github.k1rakishou.LocalKurobaTheme
+import com.github.k1rakishou.data.Post
+import com.github.k1rakishou.data.PostRepository
 
 @Composable
 fun BrowseScreen() {
