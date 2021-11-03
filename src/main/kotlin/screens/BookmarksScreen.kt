@@ -35,7 +35,7 @@ fun BookmarksScreen() {
         .fillMaxSize()
     ) {
       val lazyListState = rememberLazyListState()
-      val bookmarks = remember { BookmarkRepository.getBookmarks() }
+      val bookmarks = remember { BookmarkRepository.bookmarks }
 
       LazyVerticalGrid(
         modifier = Modifier.weight(1f),

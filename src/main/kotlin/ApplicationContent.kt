@@ -9,7 +9,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import data.KurobaTheme
-import screens.*
+import screens.ArchiveScreen
+import screens.BookmarksScreen
+import screens.BrowseScreen
+import screens.SettingsScreen
 
 @Composable
 fun BoxScope.ApplicationContent() {
@@ -56,7 +59,6 @@ private fun BoxScope.KurobaContent(state: State) {
     val currentScreen by state.currentScreen
 
     when (currentScreen) {
-      Screen.Search -> SearchScreen()
       Screen.Archive -> ArchiveScreen()
       Screen.Bookmarks -> BookmarksScreen()
       Screen.Browse -> BrowseScreen()
@@ -137,7 +139,6 @@ private fun BoxScope.ToolbarContent(state: State, kurobaTheme: KurobaTheme) {
 }
 
 private enum class Screen(val screenName: String) {
-  Search("Search"),
   Archive("Archive"),
   Bookmarks("Bookmarks"),
   Browse("Browse"),

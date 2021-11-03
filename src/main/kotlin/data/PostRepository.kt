@@ -1,5 +1,6 @@
 package data
 
+import Utils
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
@@ -40,6 +41,9 @@ object PostRepository {
       https://docs.google.com/spreadsheets/d/1h1aXl4NjwAUaPzmdqIToK9-qvmW8F7HXslfFF0UAJYk/edit#gid=0
       >sign-ups
       https://docs.google.com/forms/d/e/1FAIpQLSdLFThiw-mRqhCe0DGtmH3mbOIVz8-jeIviLX5Wox9r_V3eDg/viewform
+      
+      >>12345678 (postQuoteColor)
+      >>11223344 (postHighlightQuoteColor)
     """.trimIndent())
     subjects.add("/mjg/ - Mahjong General ")
 
@@ -68,7 +72,7 @@ object PostRepository {
       >Download Links:
       https://pastebin.com/YTGdpqZL
 
-      Previous thread: >>358195254 (Cross-thread)
+      Previous thread: >>358195254
     """.trimIndent())
     subjects.add("/vn/ - Visual Novel General #4554")
   }
@@ -80,8 +84,9 @@ object PostRepository {
     postInlineQuoteColor: Color,
     postLinkColor: Color,
     postQuoteColor: Color,
+    postHighlightQuoteColor: Color,
     postSubjectColor: Color,
-    textColorHint: Color,
+    postDetailsColor: Color,
     postSpoilerColor: Color,
     postSpoilerRevealTextColor: Color,
     postNameColor: Color
@@ -92,6 +97,7 @@ object PostRepository {
       postInlineQuoteColor = postInlineQuoteColor,
       postLinkColor = postLinkColor,
       postQuoteColor = postQuoteColor,
+      postHighlightQuoteColor = postHighlightQuoteColor,
       postSpoilerColor = postSpoilerColor,
       postSpoilerRevealTextColor = postSpoilerRevealTextColor,
     ).mapIndexed { index, postComment ->
@@ -102,7 +108,7 @@ object PostRepository {
           index = index,
           postImage = postImage,
           postSubjectColor = postSubjectColor,
-          textColorHint = textColorHint,
+          postDetailsColor = postDetailsColor,
           postNameColor = postNameColor
         ),
         postComment = postComment,
@@ -120,7 +126,7 @@ object PostRepository {
     index: Int,
     postImage: PostImage?,
     postSubjectColor: Color,
-    textColorHint: Color,
+    postDetailsColor: Color,
     postNameColor: Color
   ): AnnotatedString {
     val postNo = (index + 1000000).toLong()
@@ -148,7 +154,7 @@ object PostRepository {
 
     val currentTime = dateFormat.format(Date())
     builder.append(
-      AnnotatedString("No. ${postNo} ${currentTime}", SpanStyle(color = textColorHint))
+      AnnotatedString("No. ${postNo} ${currentTime}", SpanStyle(color = postDetailsColor))
     )
 
     if (postImage != null) {
@@ -156,8 +162,8 @@ object PostRepository {
 
       builder.append(
         AnnotatedString(
-          "${postImage.name} ${postImage.extension} ${postImage.dimens} ${getReadableFileSize(postImage.size)}",
-          SpanStyle(color = textColorHint)
+          "${postImage.name} ${postImage.extension} ${postImage.dimens} ${Utils.getReadableFileSize(postImage.size)}",
+          SpanStyle(color = postDetailsColor)
         )
       )
     }
@@ -171,6 +177,7 @@ object PostRepository {
     postInlineQuoteColor: Color,
     postLinkColor: Color,
     postQuoteColor: Color,
+    postHighlightQuoteColor: Color,
     postSpoilerColor: Color,
     postSpoilerRevealTextColor: Color,
   ): List<AnnotatedString> {
@@ -182,35 +189,10 @@ object PostRepository {
         postInlineQuoteColor = postInlineQuoteColor,
         postLinkColor = postLinkColor,
         postQuoteColor = postQuoteColor,
+        postHighlightQuoteColor = postHighlightQuoteColor,
         postSpoilerColor = postSpoilerColor,
         postSpoilerRevealTextColor = postSpoilerRevealTextColor
       )
-    }
-  }
-
-  private fun getReadableFileSize(bytes: Long): String {
-    // Nice stack overflow copy-paste, but it's been updated to be more correct
-    // https://programming.guide/java/formatting-byte-size-to-human-readable-format.html
-    val s = if (bytes < 0) {
-      "-"
-    } else {
-      ""
-    }
-
-    var b = if (bytes == Long.MIN_VALUE) {
-      Long.MAX_VALUE
-    } else {
-      Math.abs(bytes)
-    }
-
-    return when {
-      b < 1000L -> "$bytes B"
-      b < 999950L -> String.format("%s%.1f kB", s, b / 1e3)
-      1000.let { b /= it; b } < 999950L -> String.format("%s%.1f MB", s, b / 1e3)
-      1000.let { b /= it; b } < 999950L -> String.format("%s%.1f GB", s, b / 1e3)
-      1000.let { b /= it; b } < 999950L -> String.format("%s%.1f TB", s, b / 1e3)
-      1000.let { b /= it; b } < 999950L -> String.format("%s%.1f PB", s, b / 1e3)
-      else -> String.format("%s%.1f EB", s, b / 1e6)
     }
   }
 

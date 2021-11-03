@@ -3,11 +3,11 @@ package data
 import kotlin.random.Random
 
 object BookmarkRepository {
-  private val random = Random(System.currentTimeMillis())
+  private val random = Random(0)
 
-  fun getBookmarks(): List<Bookmark> {
-    return (0..100).map { index ->
-      val totalPosts = random.nextInt(0, 1000)
+  val bookmarks by lazy {
+    return@lazy (0..100).map { index ->
+      val totalPosts = random.nextInt(1, 1000)
       val unreadPosts = random.nextInt(0, totalPosts)
       val hasReplies = random.nextInt() % 5 == 0
 

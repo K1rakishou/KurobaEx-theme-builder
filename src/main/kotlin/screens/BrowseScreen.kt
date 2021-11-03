@@ -29,8 +29,9 @@ fun BrowseScreen() {
   val postInlineQuoteColor by kurobaTheme.postInlineQuoteColor
   val postLinkColor by kurobaTheme.postLinkColor
   val postQuoteColor by kurobaTheme.postQuoteColor
+  val postHighlightQuoteColor by kurobaTheme.postHighlightQuoteColor
   val postSubjectColor by kurobaTheme.postSubjectColor
-  val textColorHint by kurobaTheme.textColorHint
+  val postDetailsColor by kurobaTheme.postDetailsColor
   val postSpoilerColor by kurobaTheme.postSpoilerColor
   val postSpoilerRevealTextColor by kurobaTheme.postSpoilerRevealTextColor
   val postNameColor by kurobaTheme.postNameColor
@@ -54,8 +55,9 @@ fun BrowseScreen() {
           postInlineQuoteColor,
           postLinkColor,
           postQuoteColor,
+          postHighlightQuoteColor,
           postSubjectColor,
-          textColorHint,
+          postDetailsColor,
           postSpoilerColor,
           postSpoilerRevealTextColor,
           postNameColor
@@ -67,8 +69,9 @@ fun BrowseScreen() {
             postInlineQuoteColor = postInlineQuoteColor,
             postLinkColor = postLinkColor,
             postQuoteColor = postQuoteColor,
+            postHighlightQuoteColor = postHighlightQuoteColor,
             postSubjectColor = postSubjectColor,
-            textColorHint = textColorHint,
+            postDetailsColor = postDetailsColor,
             postSpoilerColor = postSpoilerColor,
             postSpoilerRevealTextColor = postSpoilerRevealTextColor,
             postNameColor = postNameColor,

@@ -20,6 +20,7 @@ object ReplyCommentHelper {
     postInlineQuoteColor: Color,
     postLinkColor: Color,
     postQuoteColor: Color,
+    postHighlightQuoteColor: Color,
     postSpoilerColor: Color,
     postSpoilerRevealTextColor: Color,
   ): AnnotatedString {
@@ -43,6 +44,7 @@ object ReplyCommentHelper {
     val postInlineQuoteColorUpdated = KurobaTheme.manipulateColor(postInlineQuoteColor, factor)
     val postLinkColorUpdated = KurobaTheme.manipulateColor(postLinkColor, factor)
     val postQuoteColorUpdated = KurobaTheme.manipulateColor(postQuoteColor, factor)
+    val postHighlightQuoteColorUpdated = KurobaTheme.manipulateColor(postHighlightQuoteColor, factor)
 
     for (line in commentText.split(newLine)) {
       val lineFormatted = line.trimStart()
@@ -53,7 +55,7 @@ object ReplyCommentHelper {
       }
 
       processLinks(postLinkColorUpdated, line, offset, commentTextAnnotatedBuilder)
-      processQuotes(postQuoteColorUpdated, line, offset, commentTextAnnotatedBuilder)
+      processQuotes(postQuoteColorUpdated, postHighlightQuoteColorUpdated, line, offset, commentTextAnnotatedBuilder)
       processBoardLinks(postQuoteColorUpdated, line, offset, commentTextAnnotatedBuilder)
       processSpoilers(postSpoilerColor, postSpoilerRevealTextColor, line, offset, commentTextAnnotatedBuilder)
 
@@ -142,6 +144,7 @@ object ReplyCommentHelper {
 
   private fun processQuotes(
     postQuoteColor: Color,
+    postHighlightQuoteColor: Color,
     line: String,
     offset: Int,
     commentTextAnnotatedBuilder: AnnotatedString.Builder
@@ -149,11 +152,17 @@ object ReplyCommentHelper {
     val matcher = QUOTE_MATCHER.matcher(line)
 
     while (matcher.find()) {
+      val color = if (matcher.group(0).contains("11223344")) {
+        postHighlightQuoteColor
+      } else {
+        postQuoteColor
+      }
+
       val start = matcher.start(0) + offset
       val end = matcher.end(0) + offset
 
       commentTextAnnotatedBuilder.addStyle(
-        SpanStyle(color = postQuoteColor, textDecoration = TextDecoration.Underline),
+        SpanStyle(color = color, textDecoration = TextDecoration.Underline),
         start,
         end
       )
