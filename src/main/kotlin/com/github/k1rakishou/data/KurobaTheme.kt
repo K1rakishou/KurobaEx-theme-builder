@@ -1,6 +1,5 @@
 package com.github.k1rakishou.data
 
-import androidx.annotation.ColorInt
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.SwitchColors
 import androidx.compose.material.SwitchDefaults
@@ -390,7 +389,6 @@ data class KurobaTheme(
       return argb(a, Math.min(r, 255), Math.min(g, 255), Math.min(b, 255))
     }
 
-    @ColorInt
     private fun argb(alpha: Int, red: Int, green: Int, blue: Int): Int {
       return alpha shl 24 or (red shl 16) or (green shl 8) or blue
     }
@@ -429,14 +427,14 @@ data class KurobaTheme(
       return calculateLuminance(color.toArgb()) < 0.01f
     }
 
-    private fun calculateLuminance(@ColorInt color: Int): Double {
+    private fun calculateLuminance(color: Int): Double {
       val result: DoubleArray = getTempDouble3Array()
       colorToXYZ(color, result)
       // Luminance is the Y component
       return result[1] / 100
     }
 
-    private fun colorToXYZ(@ColorInt color: Int, outXyz: DoubleArray) {
+    private fun colorToXYZ(color: Int, outXyz: DoubleArray) {
       RGBToXYZ(color.red(), color.green(), color.blue(), outXyz)
     }
 
